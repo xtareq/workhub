@@ -1,0 +1,37 @@
+
+    <%-include('layout/header') %>
+      <div class="flex flex-wrap flex-col lg:flex-row sm:flex-col p-10 pt-0">
+        <% projects.forEach(function(project){ %>
+        <div class="w-full lg:w-1/5 p-3 h-72 bg-gray-100 m-10 rounded-md shadow-lg flex relative flex-col justify-center items-center font-medium text-4xl text-pink-400" >
+          
+          <a href="/projects/delete/<%=project.id%>" class="absolute right-0 top-0 px-2">x</a>
+         
+          <span>
+            <%= project.name %>
+          </span>
+          <span class="text-lg text-indigo-400">
+            <span class="text-indigo-600">End Date: </span><%= project.endDate %>
+          </span>
+          <span class="text-lg text-blue-400">
+            <span>Status: </span> <span class="text-green-500"> <%= project.status %></span>
+          </span>
+          <span class="text-lg text-yellow-800">
+            <span>Total Tasks: </span> <span class="text-yellow-600"> <%= project.tasks.length %></span>
+          </span>
+          <span class="text-lg text-yellow-800">
+            <span>Completed Tasks: </span> <span class="text-yellow-600"> <%= project.tasks.filter(c=>c.status=='complete').length %></span>
+          </span>
+          <div>
+            <a href="/projects/<%=project.id%>/tasks" class="px-5 py-3 w-full text-base rounded-full bg-indigo-600 text-white hover:bg-indigo-900 outline-none focus:outline-none focus:ring-2 focus:ring-indigo-400">Opne Project</a>
+          </div>
+        
+         
+      </div>
+      <% })%>
+
+      </div>
+
+    </div>
+
+    <%-include('addProject') %>
+    <%-include('layout/footer') %>

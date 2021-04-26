@@ -1,0 +1,55 @@
+<%-include('layout/header') %>
+
+<div class="flex justify-center">
+    <div class="container">
+        <div class="flex">
+            <div class="h-full w-1/5 p-10" >
+                <div class="h-full p-2 bg-gray-100 shadow-lg rounded-lg  flex flex-col">
+                    <span class="text-lg bg-blue-700 rounded-lg text-gray-100 shadow-md p-2">Status</span>
+                    <a href="?status=all" class="text-lg shadow-sm p-2 rounded-lg text-gray-400">All</a>
+                    <a href="?status=open" class="text-lg shadow-sm p-2 rounded-lg text-gray-400">Open</a>
+                    <a href="?status=pending" class="text-lg shadow-sm p-2 rounded-lg text-gray-400">Pending</a>
+                    <a href="?status=progress" class="text-lg shadow-sm p-2 rounded-lg text-gray-400">In Progress</a>
+                    <a href="?status=hold" class="text-lg shadow-sm p-2 rounded-lg text-gray-400">On Hold</a>
+                    <a href="?status=complete" class="text-lg shadow-sm p-2 rounded-lg text-gray-400">Completed</a>
+                    
+                </div>
+            </div>
+            <div class="h-auto min-h-96 p-10 flex-auto">
+                <div class="h-full bg-gray-100 shadow-lg rounded-lg">
+                    <div class="w-full h-16 shadow-md flex items-center justify-between px-5">
+                        <div class="text-xl">
+                           <i class="fas fa-tasks"></i> Task List (<%=project.tasks.length%>)
+                        </div>
+
+                        <div class="action">
+                            <button class="modal-button rounded-md text-base text-green-600 p-2 shadow-lg  focus:outline-none "> <i class="fas fa-plus"></i> Add New</button>
+                        </div>
+
+                    </div>
+                    <% project.tasks.forEach(function(task){ %>
+                    <div class="flex justify-between items-center p-5 rounded-lg shadow-md mx-5 my-3">
+                        <div class="flex">
+                            <a class="text-red-500 hover:text-red-800 w-50" href="/tasks/delete/<%-task.id%>"><i class="fas fa-trash"></i></a>
+                            <span class="ml-2"><%=task.createdAt.toLocaleDateString()%></span>
+                        </div>
+                        <span class="text-base font-bold"><%=task.name%></span>
+                        
+                        <select onchange="updateTaskStatus(event,'<%-task.id%>','<%-project.id%>')"  class="form-select font-bold text-gray-400 px-2 py-2 rounded-lg shadow-lg" name="status" id="">
+                            <option value="open" <%=task.status === 'open' ? 'selected':''%> >Open</option>
+                            <option value="pending" <%= task.status === 'pending' ? 'selected':''%> >Pending</option>
+                            <option value="progress" <%= task.status === 'progress' ? 'selected':''%> >In Progress</option>
+                            <option value="hold" <%= task.status === 'hold' ? 'selected':' '%> >On Hold</option>
+                            <option value="complete" <%= task.status === 'complete' ? 'selected':''%> >Complete</option>
+                        </select>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<%-include('addTask') %>
+<%-include('layout/footer') %>

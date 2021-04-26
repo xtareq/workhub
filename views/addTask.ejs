@@ -1,0 +1,18 @@
+<div class="modal opacity-0 pointer-events-none absolute w-full h-full top-0 left-0 flex items-center justify-center">
+    <div class="modal-overlay absolute w-full h-full bg-black opacity-25 top-0 left-0 cursor-pointer"></div>
+    <div class="absolute w-1/2 h-auto bg-white rounded-lg shadow-lg flex items-center flex-col  text-xl">
+        <div class="w-full p-3 h-16 shadow-lg border  text-center">
+         Create New Task
+        </div>
+      <form action="/tasks/create" method="POST" class="flex flex-col w-full p-5">
+        <input type="text" name="name" class="p-2 w-full border form-input rounded-full outline-none focus:ring-2 focus:ring-indigo-500 my-2" 
+        placeholder="Task...">
+        <input name="projectId" type="hidden" value="<%=project.id%>">
+        <input name="status" type="hidden" value="open">
+        <div class="flex space-x-4">
+          <button type="button" onclick="toggleModal()" class="rounded-full w-1/2 bg-yellow-400 hover:bg-red-600 text-white p-3 my-3">Cancel</button>
+          <button class="rounded-full w-1/2 bg-green-400 hover:bg-green-600 text-white p-3 my-3">Save</button>
+        </div>
+        
+      </form>
+</div>

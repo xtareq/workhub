@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel='stylesheet' href='/css/style.css' />
+
+    <style>
+      .modal {
+        transition: visibility 0s lineaer 0.1s, opacity 0.3s ease;;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex h-full flex-col min-h-screen p-10 bg-indigo-50">
+      <div class="w-full h-16 flex justify-between px-10 items-center bg-gray-50 shadow-md">
+        <div class="flex">
+          <button class="mr-5 outline-none focus:outline-none" onclick="toggleDrawer()"><i class="fas fa-bars"></i></button>
+          <a href="/"  class="title text-red-600 font-extrabold text-xl">WorkHUB</a>
+        </div>
+
+        <div class="flex justify-between items-center space-x-5">
+            <% if(page=='tasks'){ %>
+                <div class="text-xl font-bold text-gray-500">
+                    <span>Project:</span> <span class="p-2 bg-yellow-100 text-purple-600 rounded-lg"><%=project.name%></span>
+                </div>
+            <% } %>
+            <a href="#" class="shadow-md outline-none rounded-md bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-600 hover:bg-green-600 p-2 font-bold text-base text-gray-50"> Sign Out <i class="fas fa-sign-out-alt"></i></a>
+
+        </div>
+         
+
+      </div>
+      <% if(page=='project'){ %>
+      <div class="w-auto h-14 flex justify-between px-10 items-center bg-gray-50 shadow-md mx-20 mt-5 mb-0 rounded-lg">
+          <div class="text-xl font-bold text-gray-700">
+              <span>Total Projects: </span> <span><%=projects.length%></span>
+          </div>
+        <div class="actions">
+            <button class="modal-button shadow-md outline-none rounded-md bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-600 hover:bg-green-600 p-2 font-bold text-base text-gray-50"><i class="fas fa-plus"></i> Add Project</button>
+          </div>
+      </div>
+      <% } %>

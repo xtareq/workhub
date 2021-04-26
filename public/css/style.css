@@ -1,0 +1,51 @@
+body {
+
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.my-modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: 20% auto;
+  width: 50vw; /* initially */
+  overflow: hidden;
+  height: 300px;
+  padding-left: 0; /* initially */
+  border-left: 1px solid whitesmoke;
+  background: white;
+  z-index: 200;
+  transition: all 0.2s;
+}
+
+
+.right-drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0; /* initially */
+  overflow: hidden;
+  height: 100vh;
+  padding-left: 0; /* initially */
+  border-left: 1px solid whitesmoke;
+  background: white;
+  z-index: 200;
+  transition: all 0.2s;
+}
+
+.drawer-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0; /* initially */
+  height: 100vh;
+  background: #000;
+  opacity: 0.3;
+  z-index: 199;
+}
